@@ -1,0 +1,80 @@
+#!/usr/bin/env python
+
+"""A simple python script template.
+"""
+
+from __future__ import print_function
+import os
+import sys
+import argparse
+import random
+import sqlite3
+from contextlib import closing
+
+def main(arguments):
+
+    """
+    parser = argparse.ArgumentParser(
+        description=__doc__,
+        formatter_class=argparse.RawDescriptionHelpFormatter)
+    parser.add_argument('infile', help="Input file", type=argparse.FileType('r'))
+    parser.add_argument('-o', '--outfile', help="Output file",
+                        default=sys.stdout, type=argparse.FileType('w'))
+
+    args = parser.parse_args(arguments)
+
+    print(args)
+    """
+
+    dbname = '/home/pi/blynk/sensordata.sqlite'
+    with closing(sqlite3.connect(dbname)) as conn:
+        cur = conn.cursor()
+
+        v0 = 10 + random.random() * 10 - 5;
+        v1 = 15 + random.random() * 10 - 5;
+        v2 = 20 + random.random() * 10 - 5;
+        v3 = 25 + random.random() * 10 - 5;
+        v4 = 30 + random.random() * 10 - 5;
+        v5 = 35 + random.random() * 10 - 5;
+        v6 = 40 + random.random() * 10 - 5;
+        v7 = 45 + random.random() * 10 - 5;
+        v6 = 50 + random.random() * 10 - 5;
+        v7 = 55 + random.random() * 10 - 5;
+        v6 = 60 + random.random() * 10 - 5;
+        v7 = 65 + random.random() * 10 - 5;
+
+	c = conn.execute('select temperature, humidity from temperatures where id = 0 order by datetime desc limit 1')
+        for row in c:
+            v0 = row[0]
+            v1 = row[1]
+
+	c = conn.execute('select temperature, humidity from temperatures where id = 1 order by datetime desc limit 1')
+        for row in c:
+            v2 = row[0]
+            v3 = row[1]
+
+	c = conn.execute('select temperature, humidity from temperatures where id = 2 order by datetime desc limit 1')
+        for row in c:
+            v4 = row[0]
+            v5 = row[1]
+
+	c = conn.execute('select temperature, humidity from temperatures where id = 3 order by datetime desc limit 1')
+        for row in c:
+            v6 = row[0]
+            v7 = row[1]
+
+	c = conn.execute('select temperature, humidity from temperatures where id = 4 order by datetime desc limit 1')
+        for row in c:
+            v8 = row[0]
+            v9 = row[1]
+
+	c = conn.execute('select temperature, humidity from temperatures where id = 5 order by datetime desc limit 1')
+        for row in c:
+            v10 = row[0]
+            v11 = row[1]
+
+        print("{0} {1} {2} {3} {4} {5} {6} {7} {8} {9} {10} {11}".format(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11));
+
+
+if __name__ == '__main__':
+	sys.exit(main(sys.argv[1:]))

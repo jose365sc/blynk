@@ -46,8 +46,8 @@ def main(arguments):
 #	    cur.execute('insert into temperatures(id, datetime, temperature, humidity) values(?, ?, ?, ?)', [1, timestamp, temperature, humidity])
 #            conn.commit()
 
-# sensor 2
-        result = subprocess.check_output(['/home/pi/blynk/read_dht.py', '--dump', '22', '17'])
+# sensor 0
+        result = subprocess.check_output(['/home/pi/blynk/read_dht', '--dump', '22', '17'])
         sys.stderr.write(result)
 	m = parse.parse('{:f} {:f}', result)
         if m[0] is not None and m[1] is not None:
@@ -58,7 +58,7 @@ def main(arguments):
 	    cur.execute('insert into temperatures(id, datetime, temperature, humidity) values(?, ?, ?, ?)', [0, timestamp, temperature, humidity])
             conn.commit()
 
-# sensor 3
+# sensor 1
         result = subprocess.check_output(['/home/pi/blynk/read_dht', '--dump', '22', '18'])
         sys.stderr.write(result)
 	m = parse.parse('{:f} {:f}', result)
@@ -70,8 +70,8 @@ def main(arguments):
 	    cur.execute('insert into temperatures(id, datetime, temperature, humidity) values(?, ?, ?, ?)', [1, timestamp, temperature, humidity])
             conn.commit()
 
-# sensor 4
-        result = subprocess.check_output(['/home/pi/blynk/read_dht.py', '--dump', '22', '22'])
+# sensor 2
+        result = subprocess.check_output(['/home/pi/blynk/read_dht', '--dump', '22', '22'])
         sys.stderr.write(result)
 	m = parse.parse('{:f} {:f}', result)
         if m[0] is not None and m[1] is not None:
@@ -82,7 +82,7 @@ def main(arguments):
 	    cur.execute('insert into temperatures(id, datetime, temperature, humidity) values(?, ?, ?, ?)', [2, timestamp, temperature, humidity])
             conn.commit()
 
-# sensor 5
+# sensor 3
         result = subprocess.check_output(['/home/pi/blynk/read_dht', '--dump', '22', '23'])
         sys.stderr.write(result)
 	m = parse.parse('{:f} {:f}', result)

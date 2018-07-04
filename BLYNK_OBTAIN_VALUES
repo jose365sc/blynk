@@ -38,10 +38,10 @@ def main(arguments):
         v5 = 35 + random.random() * 10 - 5;
         v6 = 40 + random.random() * 10 - 5;
         v7 = 45 + random.random() * 10 - 5;
-        v6 = 50 + random.random() * 10 - 5;
-        v7 = 55 + random.random() * 10 - 5;
-        v6 = 60 + random.random() * 10 - 5;
-        v7 = 65 + random.random() * 10 - 5;
+        v8 = 50 + random.random() * 10 - 5;
+        v9 = 55 + random.random() * 10 - 5;
+        v10 = 60 + random.random() * 10 - 5;
+        v11 = 65 + random.random() * 10 - 5;
 
 	c = conn.execute('select temperature, humidity from temperatures where id = 0 order by datetime desc limit 1')
         for row in c:
